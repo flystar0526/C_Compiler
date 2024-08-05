@@ -19,5 +19,7 @@ try() {
 
 try 0 0
 try 50 50
+try 21 "5+20-4"
+try 25 "5+10+10"
 
 echo OK
