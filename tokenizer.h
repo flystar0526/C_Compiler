@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // 標記種類
 typedef enum {
@@ -18,12 +19,14 @@ typedef struct Token {
   struct Token *next;  // 下一個輸入標記
   int value;           // type 為 TK_NUM 時的數值
   char *str;           // 標記文字列
+  int length;          // 標記長度
 } Token;
 
 Token *Tokenize(char *p);
-Token *NewToken(TokenType type, Token *cur, char *str);
-bool Consume(char op);
+Token *NewToken(TokenType type, Token *cur, char *str, int length);
+bool Consume(char *op);
 bool AtEof();
+bool StartWith(char *p, char *q);
 int ExpectNumber();
 void ErrorAt(char *position, char *fmt, ...);
 

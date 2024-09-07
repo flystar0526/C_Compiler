@@ -12,6 +12,10 @@ typedef enum {
   ND_SUB,  // -
   ND_MUL,  // *
   ND_DIV,  // /
+  ND_EQ,   // ==
+  ND_NE,   // !=
+  ND_LT,   // <
+  ND_LE,   // <=
   ND_NUM,  // 整數
 } NodeType;
 
@@ -28,8 +32,12 @@ Node *NewNodeNum(int value);
 
 // 生成規則
 Node *Expr();
+Node *Equality();
+Node *Relational();
+Node *Add();
 Node *Mul();
-Node *Term();
+Node *Unary();
+Node *Primary();
 
 // 生成組合語言
 void GenCode(Node *node);
